@@ -1,0 +1,116 @@
+Este relatório descreve detalhadamente o funcionamento de cada bloco de código do arquivo game.js.
+--------------------------------------------------------------------------------
+1. CONFIGURAÇÕES E CONSTANTES (Linhas 1-6)
+- Define o canvas e o contexto 2D para desenho.
+- Estabelece a gravidade (0.5) e a altura do chão (400px) para a física do jogo.
+
+2. CARREGAMENTO DE MÍDIA (Linhas 9-26)
+- Cria o elemento de vídeo para o cenário de fundo.
+- Carrega imagens isoladas: coração (vida), game over, victory e o tiro do herói.
+
+3. SISTEMA DE CARREGAMENTO DE SPRITES (Linhas 33-39)
+- Função 'carregarImagens': Recebe uma lista de caminhos e retorna um array de objetos de imagem prontos para uso.
+
+4. BIBLIOTECA DE ANIMAÇÕES (Linhas 42-107)
+- spritesHeroi: Define frames para parado, correr, atirar, esquivar, dano, morte e vitória.
+- spritesBoss1, 2 e 3: Define as animações específicas de cada chefe (movimento, ataques e morte).
+- imgsProjeteisBoss: Centraliza as imagens de todos os tipos de tiros disparados pelos bosses.
+
+5. ESTADO DO HERÓI (Linhas 111-129)
+- Objeto 'heroi': Contém posição (x, y), dimensões, física (velocidade), vida atual/máxima, barra de cura azul, estado de animação e controle de direção.
+
+6. ESTADO DO BOSS (Linhas 131-154)
+- Define qual boss será usado e suas propriedades: posição base, vida, timers de ataque/movimento e controles de animação.
+
+7. CONTROLE DE ENTRADA (Linhas 156-185)
+- Arrays 'projeteis': Armazenam os tiros ativos na tela.
+- Eventos KeyDown/KeyUp: Capturam quando o jogador aperta ou solta as teclas A, D, W e Espaço para mover o herói.
+
+8. MENU E INICIALIZAÇÃO (Linhas 189-238)
+- Listener do botão 'Iniciar':
+  - Lê a dificuldade escolhida e ajusta a vida do herói e o multiplicador de dano.
+  - Configura as dimensões e a vida do Boss dependendo da fase selecionada (1, 2 ou 3).
+  - Esconde o menu, mostra o canvas e inicia o 'gameLoop'.
+
+9. ATAQUE DO HERÓI (Linhas 241-261)
+- Listener de MouseDown: Cria um novo projétil na posição do herói e define sua direção.
+- Previne o menu de contexto (botão direito) no canvas.
+
+10. IA DO BOSS - MORTE E DERROTA (Linhas 265-328)
+- Função 'atualizarBoss':
+  - Se a vida chegar a zero, inicia a sequência de animação de morte.
+  - Boss 2 cai da tela, Boss 1 vira destroços e Boss 3 fica caído no chão.
+
+11. IA DO BOSS - VITÓRIA E MOVIMENTO (Linhas 331-383)
+- Se o herói morre, o boss comemora.
+- No estado 'movimento', o boss decide para onde ir:
+  - Boss 1: Vai e volta horizontalmente.
+  - Boss 2: Flutua para cima e para baixo.
+  - Boss 3: Vira para o lado que está o jogador.
+
+12. IA DO BOSS - SORTEIO DE ATAQUES (Linhas 386-410)
+- Um timer sorteia um número de 1 a 3 para decidir qual ataque especial o boss vai executar a seguir.
+
+13. ATAQUES DO BOSS 2 - RISADA (Linhas 411-425)
+- Lógica específica para o Boss 2 rir antes de disparar seus ataques de código.
+
+14. EXECUÇÃO DE ATAQUES (Linhas 427-453)
+- Gerencia o tempo de duração de cada ataque e a troca de sprites necessária.
+
+15. ATAQUES ESPECÍFICOS - ATAQUE 1 (Linhas 455-480)
+- Boss 1: Dispara canhões retos.
+- Boss 2: Ataca com projéteis 'JS'.
+- Boss 3: Corre em direção ao jogador.
+
+16. ATAQUES ESPECÍFICOS - ATAQUE 2 (Linhas 481-516)
+- Boss 1: Míssil teleguiado.
+- Boss 2: Chuva de arquivos 'CSS' vindo do topo.
+- Boss 3: Rajada de tiros 'Python'.
+
+17. ATAQUES ESPECÍFICOS - ATAQUE 3 (Linhas 517-562)
+- Boss 1: Mísseis que caem do céu em posições aleatórias.
+- Boss 2: Escudo de arquivos 'HTML' que vão e voltam.
+- Boss 3: Projétil 'Python' gigante que quica nas paredes.
+
+18. RESET E MATEMÁTICA DE COLISÃO (Linhas 568-597)
+- 'retornarMovimento': Volta o boss ao estado padrão.
+- 'detectarColisao' e 'getHitbox': Calculam se dois objetos se tocaram, usando margens menores para ser mais justo.
+
+19. DANO E MORTE DO HERÓI (Linhas 600-613)
+- Reduz a vida do herói e decide se ele deve entrar em estado de 'dano' ou 'morte'.
+
+20. LOOP DE ATUALIZAÇÃO - HERÓI (Linhas 616-661)
+- Função 'atualizar':
+  - Processa a esquiva (invulnerabilidade temporária).
+  - Processa o movimento horizontal e vertical do herói.
+  - Controla o tempo de intervalo entre tiros.
+
+21. FÍSICA E PROJÉTEIS (Linhas 664-815)
+- Aplica gravidade constante.
+- Move os tiros do herói e verifica se acertaram o boss.
+- Move os tiros do boss, processando comportamentos especiais:
+  - Bouncing (quicar nas paredes).
+  - Teleguiado (seguir o herói).
+  - HTML (comportamento de bumerangue).
+
+22. ANIMAÇÃO DO HERÓI (Linhas 818-864)
+- 'atualizarAnimacaoHeroi': Troca os frames baseada no estado (correr, pular, etc) e na velocidade de cada animação.
+
+23. RENDERIZAÇÃO - CENÁRIO E HERÓI (Linhas 867-902)
+- Função 'desenhar':
+  - Desenha o vídeo de fundo ou fundo sólido.
+  - Desenha o herói, invertendo a imagem se ele estiver olhando para a esquerda.
+
+24. RENDERIZAÇÃO - BOSS E PROJÉTEIS (Linhas 904-988)
+- Desenha o Boss baseado no seu estado atual.
+- Desenha todos os projéteis ativos na tela.
+- Desenha a interface: Corações de vida e Barra de HP do Boss.
+
+25. RENDERIZAÇÃO - BARRA AZUL E TELAS FINAIS (Linhas 990-1023)
+- Desenha a barra de vida extra (que carrega ao acertar o boss).
+- Mostra a tela de 'Game Over' ou 'Vitória' com as imagens centralizadas.
+
+26. FINALIZAÇÃO (Linhas 1026-1036)
+- Inicia o 'gameLoop' que roda a 60 quadros por segundo.
+- Faz o primeiro desenho da tela para evitar tela preta ao carregar.
+--------------------------------------------------------------------------------
