@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloak</title>
+    <link rel="stylesheet" href="game.css">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+        <h3>Cloak</h3>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="game.html">Game</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="game-wrapper">
+
+        <div id="selectionMenu" class="menu-content">
+            <div class="difficulty-selection">
+                <h3>Dificuldade</h3>
+                <div class="radio-group">
+                    <label><input type="radio" name="dificuldade" value="facil" checked> Fácil</label>
+                    <label><input type="radio" name="dificuldade" value="medio"> Médio</label>
+                    <label><input type="radio" name="dificuldade" value="dificil"> Difícil</label>
+                </div>
+            </div>
+
+            <div class="stage-selection">
+                <h3>Selecione a Fase</h3>
+                <div class="stage-grid">
+                    <label class="stage-card">
+                        <input type="radio" name="fase" value="1" checked>
+                        <div class="card-content">
+                            <img src="img/CORE.PNG " alt="Boss 1">
+                        </div>
+                    </label>
+                    <label class="stage-card">
+                        <input type="radio" name="fase" value="2">
+                        <div class="card-content">
+                            <img src="img/VV.PNG " alt="Boss 2">
+                        </div>
+                    </label>
+                    <label class="stage-card">
+                        <input type="radio" name="fase" value="3">
+                        <div class="card-content">
+                            <img src="img/RB.png " alt="Boss 3">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <button id="btnStart" class="btn-start">Iniciar Jogo</button>
+        </div>
+
+        <div class="central" id="gameContainer" style="display: none;">
+            <canvas id="gameCanvas" width="1200" height="600"></canvas>
+        </div>
+
+        <div class="controls-section">
+            <div class="control-item"><span class="key">W</span> Pular</div>
+            <div class="control-item"><span class="key">A</span> Esquerda</div>
+            <div class="control-item"><span class="key">D</span> Direita</div>
+            <div class="control-item"><span class="key">Space</span> Esquiva</div>
+            <div class="control-item"><span class="key">Click</span> Atirar</div>
+        </div>
+    </main>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
