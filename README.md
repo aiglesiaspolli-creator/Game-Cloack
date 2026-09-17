@@ -1,4 +1,4 @@
-# 🗡️ Cloak
+# 🔫 Cloak
 > Jogo 2D em Pixel Art Ambientado em um Universo Industrial Distópico e sua Landing Page Oficial
 
 O **Cloak** é um jogo 2D em pixel art ambientado em uma era industrial distópica. Na história, a humanidade desmoronou sob o peso do avanço tecnológico acelerado e da tirania artificial. O jogador controla um rebelde mascarado que, utilizando uma capa que o torna invisível aos radares e um revólver de chumbo e pólvora, enfrenta chefões tiranos para restaurar a liberdade.
